@@ -49,22 +49,11 @@ function FileActions(props: Props) {
   }
 
   const ActionWrapper = (props: { children: Node }) =>
-    isMobile ? (
-      <React.Fragment>{props.children}</React.Fragment>
-    ) : (
-      <div className="section__actions section__actions--no-margin">{props.children}</div>
-    );
+    isMobile ? <React.Fragment>{props.children}</React.Fragment> : <>{props.children}</>;
 
   return (
-    <div className="media__actions">
+    <>
       <ActionWrapper>
-        <Button
-          button="alt"
-          icon={ICONS.SHARE}
-          label={__('Share')}
-          onClick={() => openModal(MODALS.SOCIAL_SHARE, { uri, webShareable })}
-        />
-
         {!SIMPLE_SITE && (
           <div className="button-group">
             <Button
@@ -84,7 +73,14 @@ function FileActions(props: Props) {
             )}
           </div>
         )}
-        <ClaimSupportButton uri={uri} />
+        <ClaimSupportButton uri={uri} fileAction />
+        <Button
+          className="button--file-action"
+          iconSize={18}
+          icon={ICONS.SHARE}
+          label={__('Share')}
+          onClick={() => openModal(MODALS.SOCIAL_SHARE, { uri, webShareable })}
+        />
       </ActionWrapper>
 
       <ActionWrapper>
@@ -120,7 +116,7 @@ function FileActions(props: Props) {
           />
         )}
       </ActionWrapper>
-    </div>
+    </>
   );
 }
 

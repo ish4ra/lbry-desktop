@@ -54,7 +54,7 @@ function WalletSendTip(props: Props) {
   const [customTipAmount, setCustomTipAmount] = usePersistedState('comment-support:customTip', 1.0);
   const [useCustomTip, setUseCustomTip] = usePersistedState('comment-support:useCustomTip', false);
   const [tipError, setTipError] = React.useState();
-  const [sendAsTip, setSendAsTip] = usePersistedState('comment-support:sendAsTip', true);
+  const [sendAsTip, setSendAsTip] = React.useState(true); // usePersistedState('comment-support:sendAsTip', true);
   const [isConfirming, setIsConfirming] = React.useState(false);
   const [selectedChannel, setSelectedChannel] = usePersistedState('comment-support:channel');
   const { claim_id: claimId } = claim;
@@ -175,14 +175,14 @@ function WalletSendTip(props: Props) {
         />
       ) : (
         <Card
-          title={claimIsMine ? __('Boost your content') : isSupport ? __('Support this content') : __('Send a tip')}
+          title={claimIsMine ? __('Boost your content') : isSupport ? __('Support this content') : __('Support')}
           subtitle={
             <React.Fragment>
               {isSupport
                 ? __(
                     'This will increase the overall bid amount for this content, which will boost its ability to be discovered while active.'
                   )
-                : __('Send a chunk of change to this creator to let them know you appreciate their content.')}{' '}
+                : __('Show this channel your appreciation by sending a donation.')}{' '}
               <Button label={__('Learn more')} button="link" href="https://lbry.com/faq/tipping" />.
             </React.Fragment>
           }
@@ -298,7 +298,7 @@ function WalletSendTip(props: Props) {
                     }
                   />
                   {fetchingChannels && <span className="help">{__('Loading your channels...')}</span>}
-                  {!claimIsMine && !fetchingChannels && (
+                  {false && !claimIsMine && !fetchingChannels && (
                     <FormField
                       name="toggle-is-support"
                       type="checkbox"

@@ -25,12 +25,21 @@ type Props = {
 };
 
 export function CommentCreate(props: Props) {
-  const { createComment, claim, openModal, channels, parentId, onDoneReplying, onCancelReplying, isNested } = props;
+  const {
+    createComment,
+    claim,
+    // openModal,
+    channels,
+    parentId,
+    onDoneReplying,
+    onCancelReplying,
+    isNested,
+  } = props;
   const { push } = useHistory();
   const { claim_id: claimId } = claim;
   const isReply = !!parentId;
   const [commentValue, setCommentValue] = React.useState('');
-  const [commentAck, setCommentAck] = usePersistedState('comment-acknowledge', false);
+  //   const [commentAck, setCommentAck] = usePersistedState('comment-acknowledge', false);
   const [channel, setChannel] = usePersistedState('comment-channel', '');
   const [charCount, setCharCount] = useState(commentValue.length);
   const [advancedEditor, setAdvancedEditor] = usePersistedState('comment-editor-mode', false);
@@ -62,14 +71,14 @@ export function CommentCreate(props: Props) {
     setCommentValue(commentValue);
   }
 
-  function handleCommentAck() {
-    setCommentAck(true);
-  }
+  //   function handleCommentAck() {
+  //     setCommentAck(true);
+  //   }
 
   function onTextareaFocus() {
-    if (!commentAck) {
-      openModal(MODALS.COMMENT_ACKNOWEDGEMENT, { onCommentAcknowledge: handleCommentAck });
-    }
+    // if (!commentAck) {
+    //   openModal(MODALS.COMMENT_ACKNOWEDGEMENT, { onCommentAcknowledge: handleCommentAck });
+    // }
   }
 
   function handleSubmit() {
