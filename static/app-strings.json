@@ -1281,5 +1281,8 @@
   "Not Now": "Not Now",
   "Enter your phone number and we will send you a verification code. We will not share your phone number with third parties.": "Enter your phone number and we will send you a verification code. We will not share your phone number with third parties.",
   "Number": "Number",
+  "That email is already in use. Did you mean to sign in?": "That email is already in use. Did you mean to sign in?",
+  "To enable Sync, close LBRY completely and check 'Remember Password' during wallet unlock.": "To enable Sync, close LBRY completely and check 'Remember Password' during wallet unlock.",
+  "You are currently following %followingCount% tag": "You are currently following %followingCount% tag",
   "--end--": "--end--"
 }
